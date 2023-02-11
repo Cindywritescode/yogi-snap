@@ -29,7 +29,7 @@ This folder use Yarn to run the dependencies.
 yarn i
 ```
 
-The dependency needs to link it locally
+The below dependency needs to link it locally
 ```bash
 yarn link @tensorflow-models/pose-detection
 ```

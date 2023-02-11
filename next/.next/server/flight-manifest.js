@@ -133,12 +133,12 @@ self.__RSC_MANIFEST={
   },
   "__edge_ssr_module_mapping__": {},
   "__entry_css_files__": {
+    "/Users/cindy/Cindywritescode/yogi-snap/next/src/app/layout": [
+      "static/css/_app-client_src_app_globals_css.css"
+    ],
     "/Users/cindy/Cindywritescode/yogi-snap/next/src/app/page": [
       "static/css/_app-client_src_app_page_module_css.css",
       "static/css/_app-client_node_modules_next_font_google_target_css_path_src_app_page_js_import_Inter_argume-baa61f.css"
-    ],
-    "/Users/cindy/Cindywritescode/yogi-snap/next/src/app/layout": [
-      "static/css/_app-client_src_app_globals_css.css"
     ]
   },
   "/Users/cindy/Cindywritescode/yogi-snap/next/node_modules/next/dist/client/image.js": {
@@ -401,6 +401,15 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
+  "/Users/cindy/Cindywritescode/yogi-snap/next/src/app/globals.css": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/_app-client_src_app_globals_css.css"
+      ]
+    }
+  },
   "/Users/cindy/Cindywritescode/yogi-snap/next/node_modules/@next/font/google/target.css?{\"path\":\"src/app/page.js\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}": {
     "default": {
       "id": "null",
@@ -416,15 +425,6 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "static/css/_app-client_src_app_page_module_css.css"
-      ]
-    }
-  },
-  "/Users/cindy/Cindywritescode/yogi-snap/next/src/app/globals.css": {
-    "default": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/_app-client_src_app_globals_css.css"
       ]
     }
   }
