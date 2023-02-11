@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 const Page = () => {
-  const {query, isReady } = useRouter();
+  const { query, isReady } = useRouter();
   const [points, setPoints] = useState({});
+  const [centre, setCentre] = useState([0, 0]);
   const { path } = query;
 
   useEffect(() => {
@@ -13,11 +14,31 @@ const Page = () => {
       .then(data => setPoints(data));
   }, [path, isReady]);
 
+  useEffect(() => {
+    if (!points.keypoints) return;
+    const xPoints = points.keypoints?.map((point) => point.x);
+    const yPoints = points.keypoints?.map((point) => point.y);
+    const centreX = (Math.max(...xPoints) + Math.min(...xPoints)) / 2;
+    const centreY = (Math.max(...yPoints) + Math.min(...yPoints)) / 2;
+    setCentre([centreX, centreY]);
+  }, [points]);
+
+
   return isReady && (
     <div>
       <div style={{ position: 'relative' }}>
         <img src={`/${path}`}/>
-        <div>Points: {points.keypoints?.length || 0}</div>
+        <div>Points: {points.keypoints?.length || 0} </div>
+        <div
+          style={{
+            position: 'absolute',
+            top: centre[1],
+            left: centre[0],
+            width: '6px',
+            height: '6px',
+            borderRadius: '50px',
+            background: 'blue'
+          }}/>
         {points.keypoints?.map((point, i) =>
           <div
             key={i}
@@ -32,6 +53,19 @@ const Page = () => {
         )}
 
       </div>
+      <table style={{ border: '1px solid black' }}>
+        <tr>
+          <th>Point Name</th>
+          <th>Degree</th>
+        </tr>
+        {points.keypoints?.map((point, i) =>
+          <tr key={i}>
+            <td>{point.name}</td>
+            <td>{180 / Math.PI * Math.atan2(point.y - centre[1], point.x - centre[0])}</td>
+          </tr>
+        )}
+
+      </table>
     </div>
   );
 };

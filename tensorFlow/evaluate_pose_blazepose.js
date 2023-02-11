@@ -4,7 +4,7 @@ import * as tf from '@tensorflow/tfjs'
 import * as tfn from '@tensorflow/tfjs-node';
 import '@tensorflow/tfjs-backend-webgl';
 
-const path = 'warrior00000000.jpg'
+const path = 'downdog00000001.jpg'
 
 await tf.setBackend('tensorflow');
 const buffer = fs.readFileSync(`../next/public/${path}`);
