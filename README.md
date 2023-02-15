@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# YogiSnap 
+
+This is Y project bootstrapped with
 
 ## Getting Started Next.js
 
@@ -38,4 +40,26 @@ The dependency to be add-in
 ```bash
 yarn add @tensorflow/tfjs-backend-webgl
 ```
+<br>
 
+### Evaluation
+Command line in terminal to run the pose evaluation model
+```bash
+node evaluate_pose_blazepose.js ~/Downloads/YogaPoses/Downdog/00000037.jpg
+```
+(multiple files)
+```bash
+node evaluate_pose_blazepose.js ~/Downloads/YogaPoses/Downdog/00000*.jpg 
+```
+<br>
+
+### Utilities
+Command line in terminal to combine the csv files
+```bash
+csvstack ~/Downloads/YogaPoses/Downdog/*.csv > combined_degree_2.csv     
+```
+
+Command line in terminal to copy image from other folder to project
+```bash
+cp ~/Downloads/YogaPoses/Downdog/00000001.jpg /Users/cindy/Cindywritescode/yogi-snap/next/public/data/downdog00000001.jpg
+```

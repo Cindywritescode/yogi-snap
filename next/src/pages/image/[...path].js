@@ -6,10 +6,11 @@ const Page = () => {
   const [points, setPoints] = useState({});
   const [centre, setCentre] = useState([0, 0]);
   const { path } = query;
+  const fullPath = path?.join('/');
 
   useEffect(() => {
     if (!isReady) return;
-    fetch(`/data/${path}.json`)
+    fetch(`/data/${fullPath}.json`)
       .then(response => response.json())
       .then(data => setPoints(data));
   }, [path, isReady]);
@@ -27,7 +28,7 @@ const Page = () => {
   return isReady && (
     <div>
       <div style={{ position: 'relative' }}>
-        <img src={`/${path}`}/>
+        <img src={`/${fullPath}`} alt=''/>
         <div>Points: {points.keypoints?.length || 0} </div>
         <div
           style={{

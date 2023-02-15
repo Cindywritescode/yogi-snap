@@ -10,7 +10,7 @@ const detectorConfig = {
 };
 const detector = await poseDetection.createDetector(poseDetection.SupportedModels.MoveNet, detectorConfig);
 
-const buffer = fs.readFileSync('../next/public/warrior00000000.jpg');
+const buffer = fs.readFileSync('../next/public/warrior/00000000.jpg');
 const image = tfn.node.decodeJpeg(buffer);
 const poses = await detector.estimatePoses(image);
 console.log(JSON.stringify(poses, null, 2));
