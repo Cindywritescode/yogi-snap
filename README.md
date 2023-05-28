@@ -1,13 +1,14 @@
 # YogiSnap
 
-This project is developing with Next.js frame work and TensorFlow models.
+This project is developing with Next.js framework and TensorFlow models.
 
 The project aiming to utilise TensorFlow.js pose-detecting models (BlazeNet)
 to recognise yoga poses and analyse the accuracy of a user's yoga postures.
 
 ## Getting Started Next.js
 
-First, run the development server:
+First, change directory into next folder, <br>
+then run the development server:
 
 ```bash
 npm run dev
@@ -71,8 +72,8 @@ node evaluate_pose_blazepose.js ~/Downloads/YogaPoses/Downdog/00000*.jpg
 (Command line in terminal) 
 
 Combine the csv files
-```bash
-csvstack ~/Downloads/YogaPoses/Downdog/*.csv > combined_degree_2.csv     
+```sh
+csvstack ~/Downloads/YogaPoses/Downdog/*.csv > tensorflow/combined_degree_2.csv     
 ```
 
 Copy image from other folder to project

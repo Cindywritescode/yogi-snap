@@ -23,11 +23,12 @@ await tf.setBackend('cpu');
 
 const detectorConfig = {
   runtime: 'tfjs',
-  enableSmoothing: true,
+  // for static images
+  enableSmoothing: false,
+  // more accurate (there are 'lite', 'full', 'heavy')
   modelType: 'full'
 };
 const estimationConfig = { flipHorizontal: true };
-const timestamp = performance.now();
 const detector = await poseDetection.createDetector(poseDetection.SupportedModels.BlazePose, detectorConfig);
 
 const calculateCentrePoint = (pose) => {
@@ -42,14 +43,32 @@ const calculateDegree = (centrePoint, point) => {
   return 180 / Math.PI * Math.atan2(point.y - centrePoint[1], point.x - centrePoint[0]);
 };
 
+const calculateError = (base, variant) => {
+  return base.keypoints?.map((point, i) => {
+    return (
+      Math.pow(point.x - variant?.keypoints[i]?.x, 2) +
+      Math.pow(point.y - variant?.keypoints[i]?.y, 2)
+    ) / 2;
+  }).reduce((a, b) => a + b, 0);
+};
+
 // Evaluate a single image and store result in path
 const evaluate = async (path, image) => {
-  const poses = await detector.estimatePoses(image, estimationConfig, timestamp);
-  if (poses.length === 0) {
+  detector.reset();
+  const base = await detector.estimatePoses(image, estimationConfig, performance.now());
+  const [poseA] = await detector.estimatePoses(image, estimationConfig, performance.now());
+  const [poseB] = await detector.estimatePoses(image, estimationConfig, performance.now());
+
+  if (base.length === 0 || !poseA || !poseB) {
     return console.error(`Could not process ${path}...`);
   }
+
+  const diffA = calculateError(base[0], poseA);
+  const diffB = calculateError(base[0], poseB);
+  console.log(`Computed difference for ${path} with base diffA = ${diffA} and diffB = ${diffB}`);
+
   // Take the first pose, assuming single person
-  const detectedPose = poses[0];
+  const detectedPose = diffA < diffB ? poseA : poseB;
 
   // Print detected pose
   // console.log(JSON.stringify(detectedPose, null, 2));
