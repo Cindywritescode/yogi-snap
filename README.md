@@ -1,9 +1,12 @@
 # YogiSnap
 
-This project is developing with Next.js framework and TensorFlow models.
+![YogiSnap homepage](./next/public/images/yogiSnapHome.png)
 
-The project aiming to utilise TensorFlow.js pose-detecting models (BlazeNet)
-to recognise yoga poses and analyse the accuracy of a user's yoga postures.
+This Progressive Web App (PWA) is developing with Next.js framework and TensorFlow models.
+
+The project aiming to utilise TensorFlow.js image classification and pose-detecting models (BlazeNet)
+to recognise yoga poses and eventually analyse the accuracy of a user's yoga postures.
+
 
 ## Getting Started Next.js
 
