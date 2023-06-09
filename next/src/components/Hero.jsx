@@ -18,7 +18,7 @@ export const Hero = () => (
         </span>
     </h1>
     <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-slate-700">
-      The app to help you pose like a yogi
+      An app to help you pose like a yogi
     </p>
     <div className="mt-10 flex justify-center gap-x-6">
       <Button

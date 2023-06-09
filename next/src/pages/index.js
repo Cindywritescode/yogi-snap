@@ -5,12 +5,12 @@ import { Footer } from '../components/Footer';
 
 export default function Home() {
   return (
-    <>
-      <Container>
+    <div>
+      <Container className="z-0">
         <Hero/>
         <PrimaryFeatures/>
       </Container>
       <Footer/>
-    </>
+    </div>
   );
 }
